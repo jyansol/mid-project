@@ -31,11 +31,12 @@
 
       <div class="home-page-container">
         <div class="home-page">
-          <img src="#" alt="" class="img1">
-          <img src="#" alt="" class="img2">
-          <img src="#" alt="" class="img3">
+          <img alt="" class="img1">
+          <img alt="" class="img2">
+          <img alt="" class="img3">
+
           <p>어쩌구 저쩌구</p>
-          <button>ENTER</button>
+          <button class="enter-btn">ENTER</button>
         </div>
       </div>
 
@@ -62,44 +63,40 @@
 
     <!-- POST LIST PAGE -->
     <template id="post-page">
-      <ul>
-        <li class="list1">
-          <ul>
-            <li class="material1">Oils</li>
-            <li class="material2">Acrylic</li>
-            <li class="material3">WaterColor</li>
-            <li class="material4">Ect</li>
-          </ul>
-        </li>
+      <div class="post-page-container">
+        <div class="material">
+          <input type="button" value="Oils">
+          <input type="button" value="Acrylic">
+          <input type="button" value="WaterColor">
+          <input type="button" value="Ect">
+        </div>
 
-        <li class="list2">
-          <ul>
-            <li class="subject1">인물</li>
-            <li class="subject2">풍경</li>
-            <li class="subject3">디자인</li>
-          </ul>
-        </li>
+        <div class="subject">
+          <input type="button" value="Portrait">
+          <input type="button" value="Landscapes">
+          <input type="button" value="Digital">
+        </div>
 
-        <li class="list3">
-          <ul>
-            <li class="shape1">가로형</li>
-            <li class="shape2">세로형</li>
-            <li class="shape3">정방형</li>
-          </ul>
-        </li>
-        <li class="list4">
-          <ul>
-            <li class="colors1">빨</li>
-            <li class="colors2">주</li>
-            <li class="colors3">노</li>
-            <li class="colors4">초</li>
-            <li class="colors5">파</li>
-            <li class="colors6">남</li>
-            <li class="colors7">보</li>
-          </ul>
-        </li>
-      </ul>
-      <div class="post-list"></div>
+        <div class="shape">
+          <input type="button" value="가로형">
+          <input type="button" value="세로형">
+          <input type="button" value="정방형">
+        </div>
+
+        <div class="colors">
+          <input type="button" value="빨">
+          <input type="button" value="주">
+          <input type="button" value="노">
+          <input type="button" value="초">
+          <input type="button" value="파">
+          <input type="button" value="남">
+          <input type="button" value="보">
+        </div>
+
+        <button>SEARCH</button>
+
+        <div class="post-list"></div>
+      </div>
     </template>
 
     <!-- POST LIST ITEM -->

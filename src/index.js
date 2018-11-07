@@ -31,8 +31,26 @@ const templates = {
 };
 
 const rootEl = document.querySelector('.root');
-const frag = document.importNode(templates.homePage, true);
-rootEl.appendChild(frag);
+
+// Enter를 클릭하면 homepage를 그리는 함수
+const drawMainForm = async () => {
+  const frag = document.importNode(templates.homePage, true);
+  const enterBtn = frag.querySelector('.enter-btn');
+  enterBtn.addEventListener('click', async (e) => {
+    // e.preventDefault();
+    const frag = document.importNode(templates.postPage, true);
+    rootEl.textContent = '';
+    rootEl.appendChild(frag);
+  });
+  rootEl.textContent = '';
+  rootEl.appendChild(frag);
+};
+
+if (localStorage.getItem('token')) {
+  drawPostList();
+} else {
+  drawMainForm();
+}
 
 // 페이지 그리는 함수 작성 순서
 // 1. 템플릿 복사
