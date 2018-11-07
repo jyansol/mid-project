@@ -31,6 +31,8 @@ const templates = {
 };
 
 const rootEl = document.querySelector('.root');
+const frag = document.importNode(templates.homePage, true);
+rootEl.appendChild(frag);
 
 // 페이지 그리는 함수 작성 순서
 // 1. 템플릿 복사
