@@ -16,11 +16,11 @@
       <h1 class="logo">로고</h1>
 
       <div class="nav">
-        <button>LOGIN</button>
-        <button>LOGOUT</button>
-        <button>SIGN UP</button>
-        <button>MY PAGE</button>
-        <button>CART</button>
+        <button class="login-btn">LOGIN</button>
+        <button class="logout-btn">LOGOUT</button>
+        <button class="sign-up-btn">SIGN UP</button>
+        <button class="my-page-btn">MY PAGE</button>
+        <button class="cart-btn">CART</button>
       </div>
     </div>
     <div class="root"></div>
@@ -45,20 +45,26 @@
     <!-- LOGIN PAGE -->
     <!-- 로그인 폼 -->
     <template id="login-form">
-      <form class="login-form">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <button>LOGIN</button>
-      </form>
+      <div class="login-form-container">
+        <form class="login-form">
+          <h1>LOGIN</h1>
+          <input type="text" name="username">
+          <input type="password" name="password">
+          <button>LOGIN</button>
+        </form>
+      </div>
     </template>
 
     <!-- 회원가입 폼 -->
     <template id="sign-up-form">
-      <form class="sign-up-form">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <button>SIGN UP</button>
-      </form>
+      <div class="sign-up-container">
+        <form class="sign-up-form">
+          <h1>SIGN UP</h1>
+          <input type="text" name="username">
+          <input type="password" name="password">
+          <button>SIGN UP</button>
+        </form>
+      </div>
     </template>
 
     <!-- POST LIST PAGE -->

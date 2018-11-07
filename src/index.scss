@@ -54,6 +54,30 @@ img {
   vertical-align: middle;
 }
 
+// 로그인 폼
+.login-form-container {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: table;
+}
+.login-form {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// 회원가입 폼
+.sign-up-container {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: table;
+}
+.sign-up-form {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 // POST LIST PAGE
 .post-page-container {
   margin-top: 80px;

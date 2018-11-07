@@ -31,20 +31,54 @@ const templates = {
 };
 
 const rootEl = document.querySelector('.root');
+const logoEl = document.querySelector('.logo');
+const loginBtn = document.querySelector('.login-btn');
+const signUpnBtn = document.querySelector('.sign-up-btn');
+
+logoEl.addEventListener('click', (e) => {
+  drawMainForm();
+});
 
 // Enter를 클릭하면 homepage를 그리는 함수
 const drawMainForm = async () => {
   const frag = document.importNode(templates.homePage, true);
   const enterBtn = frag.querySelector('.enter-btn');
+
+  //enterBtn
   enterBtn.addEventListener('click', async (e) => {
     // e.preventDefault();
     const frag = document.importNode(templates.postPage, true);
     rootEl.textContent = '';
     rootEl.appendChild(frag);
   });
+
+  //loginBtn
+  loginBtn.addEventListener('click', (e) => {
+    const frag = document.importNode(templates.loginForm, true);
+    rootEl.textContent = '';
+    rootEl.appendChild(frag);
+  });
+
+  //signUpBtn
+  signUpnBtn.addEventListener('click', (e) => {
+    const frag = document.importNode(templates.signForm, true);
+    rootEl.textContent = '';
+    rootEl.appendChild(frag);
+  });
+
   rootEl.textContent = '';
   rootEl.appendChild(frag);
 };
+
+const drawLoginForm = async () => {
+  const frag = document.importNode(templates.loginForm, true);
+  const loginBtn = document.querySelector('.login-btn');
+  loginBtn.addEventListener('click', (e) => {
+    rootEl.textContent = '';
+    rootEl.appendChild(frag);
+  });
+};
+drawLoginForm();
 
 if (localStorage.getItem('token')) {
   drawPostList();
