@@ -5,14 +5,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>프로젝트</title>
+    <title>D</title>
     <link rel="stylesheet" href="./index.scss">
   </head>
 
   <body>
-    <!-- 템플릿을 이곳에 작성해주세요 -->
 
+    <!-- fixed template / HOME PAGE -->
+    <div class="main-container">
+      <h1>로고</h1>
+      <button>LOGIN</button>
+      <button>LOGOUT</button>
+      <button>SIGN UP</button>
+      <button>MY PAGE</button>
+      <button>CART</button>
+    </div>
     <div class="root"></div>
+    <footer>푸터</footer>
+
+    <!-- HOME PAGE -->
+    <template id="home-page">
+      <div class="home-page">
+        <img src="#" alt="" class="img1">
+        <img src="#" alt="" class="img2">
+        <img src="#" alt="" class="img3">
+        <p>어쩌구 저쩌구</p>
+        <button>ENTER</button>
+      </div>
+    </template>
+
+    <!-- LOGIN PAGE -->
+    <!-- 로그인 폼 -->
+    <template id="login-form">
+      <form class="login-form">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>LOGIN</button>
+      </form>
+    </template>
+
+    <!-- 회원가입 폼 -->
+    <template id="sign-up-form">
+      <form class="sign-up-form">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>SIGN UP</button>
+      </form>
+    </template>
+
+    <!-- POST LIST PAGE -->
+    <template id="post-page">
+      <ul>
+        <li class="list1">
+          <ul>
+            <li class="material1">Oils</li>
+            <li class="material2">Acrylic</li>
+            <li class="material3">WaterColor</li>
+            <li class="material4">Ect</li>
+          </ul>
+        </li>
+
+        <li class="list2">
+          <ul>
+            <li class="subject1">인물</li>
+            <li class="subject2">풍경</li>
+            <li class="subject3">디자인</li>
+          </ul>
+        </li>
+
+        <li class="list3">
+          <ul>
+            <li class="shape1">가로형</li>
+            <li class="shape2">세로형</li>
+            <li class="shape3">정방형</li>
+          </ul>
+        </li>
+        <li class="list4">
+          <ul>
+            <li class="colors1">빨</li>
+            <li class="colors2">주</li>
+            <li class="colors3">노</li>
+            <li class="colors4">초</li>
+            <li class="colors5">파</li>
+            <li class="colors6">남</li>
+            <li class="colors7">보</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="post-list"></div>
+    </template>
+
+    <!-- POST LIST ITEM -->
+    <template id="post-item">
+      <dl>
+        <dd class="post-item-img"></dd>
+        <dt class="post-item-title">제목</dt>
+        <dd class="post-item-author">작가</dd>
+        <dd class="post-item-size">사이즈</dd>
+      </dl>
+    </template>
+
+
+    <!-- POST DETAIL PAGE -->
+    <template id="detail-page">
+      <dl>
+        <dd class="detail-page-img"></dd>
+        <dt class="detail-page-title">제목</dt>
+        <dd class="detail-page-author">가격</dd>
+      </dl>
+      <button>ORDER</button>
+      <button>CART</button>
+    </template>
+
+    <!-- CART PAGE -->
+    <template id="cart-page">
+      <div class="cart-list"></div>
+      <button>ORDER</button>
+    </template>
+
+    <!-- CART PAGE LIST -->
+    <template id="cart-item">
+      <dl>
+        <dd class="cart-item-img"></dd>
+        <dt class="cart-item-title">제목</dt>
+        <dd class="cart-item-author">가격</dd>
+        <button>DELETE</button>
+      </dl>
+    </template>
+
+    <!-- MY PAGE -->
+    <template id="my-page">
+      <h1>배송지 정보</h1>
+      <div class="my-page-list"></div>
+    </template>
+
+    <!-- MY PAGE LIST -->
+    <template id="my-page-item">
+      <form>
+        <label>이름</label>
+        <input type="text" name="name" value="이름을 입력하세요">
+        <input type="nember" name="mobile" value="번호을 입력하세요">
+        <input type="text" name="email" value="이메일을 입력하세요">
+        <input type="text" name="address" value="주소를 입력하세요">
+        <input type="text" name="request" value="요청사항을 입력하세요">
+        <button>결제하기</button>
+      </form>
+    </template>
+
+    <!-- PAY PAGE -->
+    <template id="pay-page">
+      <h1>MY PAGE</h1>
+      <div class="pay-page-list"></div>
+    </template>
+
+    <!-- PAY PAGE LIST -->
+    <template id="pay-page-item">
+      <table>
+        <thead>
+          <tr>
+            <td>이름</td>
+            <td>번호</td>
+            <td>이메일</td>
+            <td>주소</td>
+            <td>요청사항</td>
+            <td>가격</td>
+          </tr>
+        </thead>
+      </table>
+    </template>
+
+
     <script src="./index.js"></script>
   </body>
 

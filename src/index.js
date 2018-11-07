@@ -1,25 +1,36 @@
-import '@babel/polyfill' // 이 라인을 지우지 말아주세요!
+import '@babel/polyfill'; // 이 라인을 지우지 말아주세요!
 
-import axios from 'axios'
+import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.API_URL
-})
+  baseURL: process.env.API_URL,
+});
 
-api.interceptors.request.use(function (config) {
-  const token = localStorage.getItem('token')
+api.interceptors.request.use(function(config) {
+  const token = localStorage.getItem('token');
   if (token) {
-    config.headers = config.headers || {}
-    config.headers['Authorization'] = 'Bearer ' + token
+    config.headers = config.headers || {};
+    config.headers['Authorization'] = 'Bearer ' + token;
   }
-  return config
+  return config;
 });
 
 const templates = {
+  homePage: document.querySelector('#home-page').content,
+  loginForm: document.querySelector('#login-form').content,
+  signForm: document.querySelector('#sign-up-form').content,
+  postPage: document.querySelector('#post-page').content,
+  postItem: document.querySelector('#post-item').content,
+  detailPage: document.querySelector('#detail-page').content,
+  cartPage: document.querySelector('#cart-page').content,
+  cartItem: document.querySelector('#detail-page').content,
+  myPage: document.querySelector('#my-page').content,
+  mypageItem: document.querySelector('#my-page-item').content,
+  payPage: document.querySelector('#pay-page').content,
+  payPageItem: document.querySelector('#pay-page-item').content,
+};
 
-}
-
-const rootEl = document.querySelector('.root')
+const rootEl = document.querySelector('.root');
 
 // 페이지 그리는 함수 작성 순서
 // 1. 템플릿 복사
