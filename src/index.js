@@ -52,6 +52,7 @@ const drawMainForm = async () => {
   });
 
   //loginBtn을 누르면 로그인 폼이 나타나는 이벤트
+
   loginBtn.addEventListener('click', (e) => {
     if (localStorage.getItem('token')) {
       alert('로그인됨');
@@ -65,6 +66,7 @@ const drawMainForm = async () => {
   logoutBtn.addEventListener('click', (e) => {
     localStorage.removeItem('token');
     drawMainForm();
+    // document.querySelector('.login-btn').textContent = '';
   });
 
   //signUpBtn을 누르면 회원가입 폼이 나타나는 이벤트
@@ -107,15 +109,32 @@ const drawLoginForm = async () => {
 // 상품 리스트 출력
 const drawPostList = async () => {
   const frag = document.importNode(templates.postPage, true);
+  const postListEl = frag.querySelector('.post-list');
+  const oilsBtn = frag.querySelector('.oils-btn');
+  const { data: postPage } = await api.get('/products');
+
+  for (const postItem of postPage) {
+    const frag = document.importNode(templates.postItem, true);
+    const imgEl = frag.querySelector('.post-item-img');
+    const titleEl = frag.querySelector('.post-item-title');
+    const authorEl = frag.querySelector('.post-item-author');
+    const sizeEl = frag.querySelector('.post-item-size');
+
+    imgEl.textContent = postItem.mainImgUrl; //어트리뷰트메소드로 src에 추가
+    titleEl.textContent = postItem.title;
+    authorEl.textContent = postItem.description;
+    sizeEl.textContent = postItem.size;
+
+    postListEl.appendChild(frag);
+  }
+
+  oilsBtn.addEventListener('click', (e) => {
+    //category가 oils인것만 출력
+  });
+
   rootEl.textContent = '';
   rootEl.appendChild(frag);
-  loginBtn.addEventListener('click', async (e) => {
-    // if (localStorage.getItem('token')) {
-    // }
-  });
 };
-
-// 로그인 함수
 
 // HomePage에서 버튼을 누르면 조건에 맞는 상품이 보여지는 함수
 const drawPostDetail = async () => {
