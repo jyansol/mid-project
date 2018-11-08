@@ -112,6 +112,7 @@ const drawPostList = async () => {
   const postListEl = frag.querySelector('.post-list');
   const oilsBtn = frag.querySelector('.oils-btn');
   const { data: postPage } = await api.get('/products');
+  const { data: postItem } = await api.get('/products?category=oils');
 
   for (const postItem of postPage) {
     const frag = document.importNode(templates.postItem, true);
@@ -127,9 +128,16 @@ const drawPostList = async () => {
 
     postListEl.appendChild(frag);
   }
-
-  oilsBtn.addEventListener('click', (e) => {
+  //oilsBtn이 체크되면 oils인 것을 불러오게
+  oilsBtn.addEventListener('click', async (e) => {
     //category가 oils인것만 출력
+    // oil 이라는 value를 보내고 category=oils라는 조건을 받아오기
+    // const category = e.target.elements..value;
+    // const res = await api.post('/products', {
+    //   category,
+    //   complete: false,
+    // });
+    console.log('보냄?');
   });
 
   rootEl.textContent = '';
