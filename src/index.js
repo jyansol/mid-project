@@ -110,9 +110,8 @@ const drawPostList = async () => {
   rootEl.textContent = '';
   rootEl.appendChild(frag);
   loginBtn.addEventListener('click', async (e) => {
-    if (localStorage.getItem('token')) {
-      document.
-    }
+    // if (localStorage.getItem('token')) {
+    // }
   });
 };
 
