@@ -41,7 +41,6 @@
           <div class="position">
             <div class="bounce">
               <div class="rotate">
-                <!-- <p class="deform">GRIM</p> -->
               </div>
             </div>
           </div>
@@ -178,16 +177,18 @@
 
     <!-- CART PAGE -->
     <template id="cart-page">
-      <div class="cart-list"></div>
-      <button>ORDER</button>
+      <div class="cart-page-container">
+        <div class="cart-list"></div>
+        <button class="order-btn">ORDER</button>
+      </div>
     </template>
 
     <!-- CART PAGE LIST -->
     <template id="cart-item">
       <dl>
-        <dd class="cart-item-img"></dd>
+        <img class="cart-item-img">
         <dt class="cart-item-title">제목</dt>
-        <dd class="cart-item-author">가격</dd>
+        <dd class="cart-item-price">가격</dd>
         <button>DELETE</button>
       </dl>
     </template>

@@ -125,7 +125,7 @@ const drawPostList = async (category) => {
     params,
   });
 
-  for (const { id: title, author, mainImgUrl } of postPage) {
+  for (const { id, title, author, mainImgUrl } of postPage) {
     const frag = document.importNode(templates.postItem, true);
     const imgEl = frag.querySelector('.post-item-img');
     const titleEl = frag.querySelector('.post-item-title');
@@ -136,7 +136,7 @@ const drawPostList = async (category) => {
     authorEl.textContent = author;
 
     imgEl.addEventListener('click', (e) => {
-      drawPostDetail(title);
+      drawPostDetail(id);
     });
 
     postListEl.appendChild(frag);
@@ -153,7 +153,7 @@ const drawPostList = async (category) => {
         params,
       });
 
-      for (const { id: title, author, mainImgUrl } of postPage) {
+      for (const { id, title, author, mainImgUrl } of postPage) {
         const frag = document.importNode(templates.postItem, true);
 
         const imgEl = frag.querySelector('.post-item-img');
@@ -165,6 +165,10 @@ const drawPostList = async (category) => {
         authorEl.textContent = author;
         postListEl.textContent = '';
         postListEl.appendChild(frag);
+
+        imgEl.addEventListener('click', (e) => {
+          drawPostDetail(id);
+        });
       }
       console.log(`products?category=${el.getAttribute('name')}`);
     });
@@ -226,16 +230,45 @@ const drawPostDetail = async (itemId) => {
   //   drawMypage();
   // });
 
-  //장바구니
-  // cartEl.addEventListener('click', (e) => {
-  //   drawCartPage();
-  // });
+  // 장바구니
+  cartEl.addEventListener('click', async () => {
+    const frag = document.importNode(templates.cartItem, true);
+    const imgEl = frag.querySelector('.cart-item-img');
+    const titleEl = frag.querySelector('.cart-item-title');
+    const priceEl = frag.querySelector('.cart-item-price');
+    console.log(mainImgUrl);
+    imgEl.setAttribute('src', mainImgUrl);
+    // titleEl.textContent = title;
+    // priceEl.textContent = price;
+
+    // orderEl.addEventListener('click', async (e) => {
+    //   const frag = document.importNode(templates.cartItem, true);
+    //   const imgEl = frag.querySelector('.cart-item-img');
+    //   const titleEl = frag.querySelector('.cart-item-title');
+    //   const priceEl = frag.querySelector('.cart-item-price');
+
+    //   const {
+    //     data: { mainImgUrl, title, author, price },
+    //   } = await api.get('/products', {
+    //     params: {
+    //       _embed: 'options',
+    //     },
+    //   });
+
+    //   imgEl.setAttribute('src', mainImgUrl);
+    //   titleEl.textContent = title;
+    //   authorEl.textContent = author;
+
+    //   // cartList.appendChild(frag);
+    // });
+
+    rootEl.textContent = '';
+    rootEl.appendChild(frag);
+  });
 
   rootEl.textContent = '';
   rootEl.appendChild(frag);
 };
-
-const drawCartPage = () => {};
 
 if (localStorage.getItem('token')) {
   drawPostList();

@@ -141,9 +141,13 @@ button {
   color: rgb(209, 209, 211);
 }
 
+// input[type='checkbox'] {
+//   display: none;
+// }
+
 // 헤더영역 - 로고
 .logo {
-  color: rgb(209, 209, 211);
+  color: rgb(217, 236, 234);
 }
 
 // 메인영역
@@ -153,7 +157,7 @@ button {
   height: 100vh;
   display: table;
 
-  background: linear-gradient(34deg, #3a4989, #4d3b0e, #66318a, #873516);
+  background: linear-gradient(34deg, #162667, #df350e, #532076, #e2a200);
   background-size: 800% 800%;
 
   -webkit-animation: AnimationName 6s ease infinite;
@@ -203,6 +207,7 @@ button {
   height: 30px;
   background-color: transparent;
   border: 1px solid $white;
+  color: $white;
 }
 
 .main-text {
@@ -249,6 +254,10 @@ button {
 // 상세페이지
 .detail-page-container {
   margin-top: 150px;
+}
+
+.cart-page-container div {
+  margin-top: 500px;
 }
 
 // 푸터
