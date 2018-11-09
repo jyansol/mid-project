@@ -124,16 +124,16 @@ const drawPostList = async () => {
   //   },
   // });
 
-  const subjectCheckboxEls = frag.querySelectorAll('.subject input');
-  subjectCheckboxEls.forEach((el) => {
-    el.addEventListener('click', (e) => {
-      console.log(`${e.target.getAttribute('name')}: ${e.target.checked}`);
-    });
-  });
+  // const subjectCheckboxEls = frag.querySelectorAll('.subject input');
+  // subjectCheckboxEls.forEach((el) => {
+  //   el.addEventListener('click', (e) => {
+  //     console.log(`${e.target.getAttribute('name')}: ${e.target.checked}`);
+  //   });
+  // });
 
-  //oilsBtn이 체크되면 oils인 것을 불러오게
-  oilsBtn.addEventListener('click', async (e) => {
-    params.append('category', 'oils');
+  const checkedboxEls = frag.querySelectorAll('.post-page-container input');
+  checkedboxEls.forEach((el) => {
+    el.addEventListener('click', (e) => {});
   });
 
   for (const postItem of postPage) {
@@ -150,6 +150,12 @@ const drawPostList = async () => {
 
     postListEl.appendChild(frag);
   }
+
+  // if(checked면){
+  //   전부보여줘
+  // }else{
+  //   체크된 값만
+  // }
 
   rootEl.textContent = '';
   rootEl.appendChild(frag);
