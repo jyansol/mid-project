@@ -107,11 +107,58 @@ const drawLoginForm = async () => {
 // drawLoginForm();
 
 // 상품 리스트 출력
-const drawPostList = async () => {
+const drawPostList = async (category) => {
   const frag = document.importNode(templates.postPage, true);
   const postListEl = frag.querySelector('.post-list');
-  const oilsBtn = frag.querySelector('.oils-btn');
-  const { data: postPage } = await api.get('/products');
+  const checkedboxEls = frag.querySelectorAll('.post-page-container input');
+
+  checkedboxEls.forEach((el) => {
+    // if (true) {
+    //   el.setAttribute('checked', '');
+    //   console.log('hjei');
+    //   //checked라는 어트리뷰트가 completeEl에 추가되면 체크됨
+    // }
+    el.addEventListener('click', async (e) => {
+      // e.preventDefault(); //비관적 업데이트 방식으로 변환!
+      // 01. 비관적 업데이트 : 사용자 입력이 일어난뒤에 수정요청을 보내고 성공 시 화면을 갱신
+      // 02. 낙관적 업데이트 : 사용자 입력이 일어난뒤에 바로 화면 갱신하고 수정요청을 보냄
+      //patch가 성공한다면 {}의 코드 실행
+      await api.get(`/products?category=${el.getAttribute('name')}`);
+      console.log(`/products?category=${el.getAttribute('name')}`);
+    });
+  });
+
+  const params = {};
+  if (category) {
+    params.category = category;
+  }
+  const { data: postPage } = await api.get('/products', {
+    params,
+  });
+
+  for (const { id: title, author, mainImgUrl } of postPage) {
+    // 1. 템플릿 복사
+    const frag = document.importNode(templates.postItem, true);
+
+    // 2. 요소 선택
+    const imgEl = frag.querySelector('.post-item-img');
+    const titleEl = frag.querySelector('.post-item-title');
+    const authorEl = frag.querySelector('.post-item-author');
+
+    // 3. 필요한 데이터 불러오기 - x
+    // 4. 내용 채우기
+    imgEl.setAttribute('src', mainImgUrl);
+    titleEl.textContent = title;
+    authorEl.textContent = author;
+
+    // 5. 이벤트 리스너 등록하기
+    // 6. 템플릿을 문서에 삽입
+    postListEl.appendChild(frag);
+  }
+
+  // input box를 다 for문 돌려서
+
+  // postListEl.appendChild(frag);
 
   // const {
   //   data: productList, // product 객체들을 담고있는 배열
@@ -131,42 +178,15 @@ const drawPostList = async () => {
   //   });
   // });
 
-  const checkedboxEls = frag.querySelectorAll('.post-page-container input');
-  checkedboxEls.forEach((el) => {
-    el.addEventListener('click', (e) => {});
-  });
-
-  for (const postItem of postPage) {
-    const frag = document.importNode(templates.postItem, true);
-    const imgEl = frag.querySelector('.post-item-img');
-    const titleEl = frag.querySelector('.post-item-title');
-    const authorEl = frag.querySelector('.post-item-author');
-    const sizeEl = frag.querySelector('.post-item-size');
-
-    imgEl.setAttribute('src', postItem.mainImgUrl); //어트리뷰트메소드로 src에 추가
-    titleEl.textContent = postItem.title;
-    authorEl.textContent = postItem.description;
-    sizeEl.textContent = postItem.size;
-
-    postListEl.appendChild(frag);
-  }
-
-  // if(checked면){
-  //   전부보여줘
-  // }else{
-  //   체크된 값만
-  // }
-
   rootEl.textContent = '';
   rootEl.appendChild(frag);
 };
 
-// HomePage에서 버튼을 누르면 조건에 맞는 상품이 보여지는 함수
-const drawPostDetail = async () => {
-  const frag = document.importNode(templates.postPage, true);
-  const postList = frag.querySelector('.post-list');
-  const btn = frag.querySelector('.post-list');
-  oilsBtn.addEventListener('click', async (e) => {});
+// 상세페이지
+const drawPostDetail = () => {
+  const frag = document.importNode(templates.detailPage, true);
+  rootEl.textContent = '';
+  rootEl.appendChild(frag);
 };
 
 if (localStorage.getItem('token')) {

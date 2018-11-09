@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>D</title>
     <!-- <link rel="stylesheet" href="./index.scss"> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
     <link rel="stylesheet" href="./index.scss">
   </head>
 
@@ -35,12 +36,12 @@
 
       <div class="home-page-container">
         <div class="home-page">
-          <p class="main-img">그림으로 변화된 공간</p>
-          <button class="enter-btn btn btn-warning">ENTER</button>
+          <p class="main-text">그림으로 변화된 공간</p>
+          <button class="enter-btn">ENTER</button>
           <div class="position">
             <div class="bounce">
               <div class="rotate">
-                <p class="deform">GRIM</p>
+                <!-- <p class="deform">GRIM</p> -->
               </div>
             </div>
           </div>
@@ -77,27 +78,59 @@
     <!-- POST LIST PAGE -->
     <template id="post-page">
       <div class="post-page-container">
+        <label> ALL
+          <input type="checkbox" name="all" checked>
+        </label>
         <div class="material">
-          <label>재료</label>
+          <label>재료 : </label>
           <label>
             <input type="checkbox" name="oils" class="oils-btn">
             Oils
           </label>
-          <input type="checkbox" name="acrylic">
-          <input type="checkbox" name="waterColor">
-          <input type="checkbox" name="ect">
+          <label>
+            <input type="checkbox" name="acrylic">
+            Acrylic
+          </label>
+          <label>
+            <input type="checkbox" name="waterColor">
+            WaterColor
+          </label>
+          <label>
+            <input type="checkbox" name="ect">
+            Ect
+          </label>
         </div>
 
         <div class="subject">
-          <input type="checkbox" name="portrait">
-          <input type="checkbox" name="landscapes">
-          <input type="checkbox" name="digital">
+          <label>주제 : </label>
+          <label>
+            <input type="checkbox" name="portrait">
+            인물화
+          </label>
+          <label>
+            <input type="checkbox" name="landscapes">
+            풍경화
+          </label>
+          <label>
+            <input type="checkbox" name="digital">
+            일러스트
+          </label>
         </div>
 
         <div class="shape">
-          <input type="checkbox" name="가로형">
-          <input type="checkbox" name="세로형">
-          <input type="checkbox" name="정방형">
+          <label>사이즈 : </label>
+          <label>
+            <input type="checkbox" name="가로형">
+            가로형
+          </label>
+          <label>
+            <input type="checkbox" name="세로형">
+            세로형
+          </label>
+          <label>
+            <input type="checkbox" name="정방형">
+            정방형
+          </label>
         </div>
 
         <div class="colors">
@@ -122,20 +155,21 @@
         <img class="post-item-img">
         <dt class="post-item-title">제목</dt>
         <dd class="post-item-author">작가</dd>
-        <dd class="post-item-size">사이즈</dd>
       </dl>
     </template>
 
 
     <!-- POST DETAIL PAGE -->
     <template id="detail-page">
-      <dl>
-        <dd class="detail-page-img"></dd>
-        <dt class="detail-page-title">제목</dt>
-        <dd class="detail-page-author">가격</dd>
-      </dl>
-      <button>ORDER</button>
-      <button>CART</button>
+      <div class="detail-page-container">
+        <dl>
+          <img class="detail-page-img">
+          <dt class="detail-page-title">제목</dt>
+          <dd class="detail-page-price">가격</dd>
+        </dl>
+        <button>ORDER</button>
+        <button>CART</button>
+      </div>
     </template>
 
     <!-- CART PAGE -->

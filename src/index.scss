@@ -1,5 +1,6 @@
 @use postcss-cssnext;
 $key-color: skyblue;
+$white: rgb(209, 209, 211);
 
 div,
 p {
@@ -8,9 +9,9 @@ p {
   animation-iteration-count: infinite;
 }
 
-.rotate {
-  animation-name: rotate;
-}
+// .rotate {
+//   animation-name: rotate;
+// }
 .bounce {
   animation-name: bounce;
 }
@@ -25,52 +26,52 @@ p {
   transform: translateX(-50%);
 }
 
-p.deform {
-  border-bottom: 100px solid rgb(230, 183, 29);
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  height: 0;
-  width: 80px;
-  line-height: 80px;
-  text-indent: -5px;
-  color: #fefefe;
-}
+// p.deform {
+//   border-bottom: 100px solid rgb(230, 183, 29);
+//   border-left: 25px solid transparent;
+//   border-right: 25px solid transparent;
+//   height: 0;
+//   width: 80px;
+//   line-height: 80px;
+//   text-indent: -5px;
+//   color: #fefefe;
+// }
 
-p.deform::before {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top: 100px;
-  right: -25px;
-  width: 80px;
-  height: 15px;
-  background: rgb(206, 134, 27);
-}
+// p.deform::before {
+//   content: '';
+//   display: inline-block;
+//   position: absolute;
+//   right: -25px;
+//   width: 80px;
+//   height: 80px;
+//   border-radius: 50%;
+//   background: rgb(230, 183, 29);
+// }
 
-p.deform::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  right: -4.8px;
-  background: rgb(226, 226, 226);
-  width: 40px;
-  height: 20px;
-  border-top: 10px solid transparent;
-}
+// p.deform::after {
+//   content: '';
+//   display: inline-block;
+//   position: absolute;
+//   bottom: 0;
+//   right: -4.8px;
+//   background: rgb(226, 226, 226);
+//   width: 40px;
+//   height: 20px;
+//   border-top: 10px solid transparent;
+// }
 
-@keyframes rotate {
-  0%,
-  25% {
-    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-    transform: rotate(0deg);
-  }
+// @keyframes rotate {
+//   0%,
+//   25% {
+//     animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+//     transform: rotate(0deg);
+//   }
 
-  85%,
-  100% {
-    transform: rotate(540deg);
-  }
-}
+//   85%,
+//   100% {
+//     transform: rotate(540deg);
+//   }
+// }
 
 @keyframes bounce {
   0%,
@@ -105,6 +106,7 @@ p.deform::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: $white;
 }
 
 body,
@@ -122,13 +124,13 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   z-index: 1;
   width: 100%;
   height: 80px;
   padding: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 // 헤더영역 - nav
@@ -145,24 +147,69 @@ img {
 }
 
 // 메인영역
+
 .home-page-container {
   text-align: center;
   width: 100%;
   height: 100vh;
   display: table;
+
+  background: linear-gradient(34deg, #3a4989, #4d3b0e, #66318a, #873516);
+  background-size: 800% 800%;
+
+  -webkit-animation: AnimationName 6s ease infinite;
+  -moz-animation: AnimationName 6s ease infinite;
+  animation: AnimationName 6s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 74% 0%;
+    }
+    50% {
+      background-position: 27% 100%;
+    }
+    100% {
+      background-position: 74% 0%;
+    }
+  }
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 74% 0%;
+    }
+    50% {
+      background-position: 27% 100%;
+    }
+    100% {
+      background-position: 74% 0%;
+    }
+  }
+  @keyframes AnimationName {
+    0% {
+      background-position: 74% 0%;
+    }
+    50% {
+      background-position: 27% 100%;
+    }
+    100% {
+      background-position: 74% 0%;
+    }
+  }
 }
 .home-page {
   display: table-cell;
   vertical-align: middle;
 }
-.btn-warning {
-  margin-top: -300px;
+.enter-btn {
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  border: 1px solid $white;
 }
 
-.main-img {
+.main-text {
   font-family: 'East Sea Dokdo', cursive;
-  font-size: 50px;
-  color: rgb(209, 209, 211);
+  font-size: 40px;
+  color: rgb(209, 209, 209);
 }
 
 // 로그인 폼
@@ -194,6 +241,17 @@ img {
   padding-top: 80px;
 }
 
+// color input box
+.colors input {
+  width: 30px;
+  height: 30px;
+}
+
+// 상세페이지
+.detail-page-container {
+  margin-top: 150px;
+}
+
 // 푸터
 footer {
   color: #fefefe;
@@ -203,5 +261,5 @@ footer {
   height: 25px;
   text-align: center;
   line-height: 25px;
-  background-color: rgb(230, 183, 29);
+  background-color: rgb(46, 46, 46);
 }
