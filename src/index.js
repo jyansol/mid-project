@@ -87,7 +87,6 @@ const drawLoginForm = async () => {
 
   // 전송버튼을 누르면
   formEl.addEventListener('submit', async (e) => {
-    console.log('haha');
     e.preventDefault();
     const username = e.target.elements.username.value;
     const password = e.target.elements.password.value;
@@ -110,23 +109,10 @@ const drawLoginForm = async () => {
 const drawPostList = async (category) => {
   const frag = document.importNode(templates.postPage, true);
   const postListEl = frag.querySelector('.post-list');
-  const checkedboxEls = frag.querySelectorAll('.post-page-container input');
-
-  checkedboxEls.forEach((el) => {
-    // if (true) {
-    //   el.setAttribute('checked', '');
-    //   console.log('hjei');
-    //   //checked라는 어트리뷰트가 completeEl에 추가되면 체크됨
-    // }
-    el.addEventListener('click', async (e) => {
-      // e.preventDefault(); //비관적 업데이트 방식으로 변환!
-      // 01. 비관적 업데이트 : 사용자 입력이 일어난뒤에 수정요청을 보내고 성공 시 화면을 갱신
-      // 02. 낙관적 업데이트 : 사용자 입력이 일어난뒤에 바로 화면 갱신하고 수정요청을 보냄
-      //patch가 성공한다면 {}의 코드 실행
-      await api.get(`/products?category=${el.getAttribute('name')}`);
-      console.log(`/products?category=${el.getAttribute('name')}`);
-    });
-  });
+  const materialCheckboxEls = frag.querySelectorAll('.material input');
+  const subjecCheckboxEls = frag.querySelectorAll('.subject input');
+  const shapeCheckboxEls = frag.querySelectorAll('.shape input');
+  const colorsCheckboxEls = frag.querySelectorAll('.colors input');
 
   const params = {};
   if (category) {
@@ -155,6 +141,44 @@ const drawPostList = async (category) => {
     // 6. 템플릿을 문서에 삽입
     postListEl.appendChild(frag);
   }
+
+  // 재료 체크 박스
+  materialCheckboxEls.forEach((el) => {
+    el.addEventListener('click', async (category) => {
+      const params = {};
+      if (category) {
+        params.category = category;
+      }
+      const { data: postPage } = await api.get(`/products?category=${el.getAttribute('name')}`, {
+        params,
+      });
+
+      for (const { id: title, author, mainImgUrl } of postPage) {
+        // 1. 템플릿 복사
+        const frag = document.importNode(templates.postItem, true);
+
+        // 2. 요소 선택
+        const imgEl = frag.querySelector('.post-item-img');
+        const titleEl = frag.querySelector('.post-item-title');
+        const authorEl = frag.querySelector('.post-item-author');
+
+        // 3. 필요한 데이터 불러오기 - x
+        // 4. 내용 채우기
+        imgEl.setAttribute('src', mainImgUrl);
+        titleEl.textContent = title;
+        authorEl.textContent = author;
+
+        // 5. 이벤트 리스너 등록하기
+        // 6. 템플릿을 문서에 삽입
+        postListEl.textContent = '';
+        postListEl.appendChild(frag);
+      }
+
+      // await api.get(`/products?category=${el.getAttribute('name')}`);
+
+      console.log(`products?category=${el.getAttribute('name')}`);
+    });
+  });
 
   // input box를 다 for문 돌려서
 
