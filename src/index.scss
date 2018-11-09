@@ -115,6 +115,10 @@ html {
   background-color: rgb(54, 54, 52);
 }
 
+button {
+  color: black;
+}
+
 // 헤더영역
 .main-container {
   display: flex;
@@ -143,7 +147,6 @@ html {
 }
 
 // 메인영역
-
 .home-page-container {
   text-align: center;
   width: 100%;
@@ -232,16 +235,15 @@ html {
   vertical-align: middle;
 }
 
-// POST LIST PAGE
-
-.post-page-container {
-  padding-top: 120px;
-}
-
-// color input box
+// 색상 카테고리
 .colors input {
   width: 30px;
   height: 30px;
+}
+
+// 상품페이지
+.post-page-container {
+  padding-top: 120px;
 }
 
 // 상세페이지

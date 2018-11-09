@@ -109,10 +109,10 @@ const drawLoginForm = async () => {
 const drawPostList = async (category) => {
   const frag = document.importNode(templates.postPage, true);
   const postListEl = frag.querySelector('.post-list');
-  const materialCheckboxEls = frag.querySelectorAll('.material input');
-  const subjecCheckboxEls = frag.querySelectorAll('.subject input');
-  const shapeCheckboxEls = frag.querySelectorAll('.shape input');
-  const colorsCheckboxEls = frag.querySelectorAll('.colors input');
+  const materialCheckboxEls = frag.querySelectorAll('.material input[type="checkbox"]');
+  const subjecCheckboxEls = frag.querySelectorAll('.subject input[type="checkbox"]');
+  const shapeCheckboxEls = frag.querySelectorAll('.shape input[type="checkbox"]');
+  const colorsCheckboxEls = frag.querySelectorAll('.colors input[type="checkbox"]');
   // 첫화면에 그려지게
   // ALL이 체크되어 있을때
   // 다른 checkbox 체크하면 ALL체크 풀리게
@@ -137,10 +137,6 @@ const drawPostList = async (category) => {
 
     imgEl.addEventListener('click', (e) => {
       drawPostDetail(title);
-      // console.log(e.target.id);
-      // console.log(postIem.mainImgUrl);
-      // console.log(postIem.title);
-      // console.log(postIem.author);
     });
 
     postListEl.appendChild(frag);
@@ -231,13 +227,15 @@ const drawPostDetail = async (itemId) => {
   // });
 
   //장바구니
-  cartEl.addEventListener('click', (e) => {
-    drawCartPage();
-  });
+  // cartEl.addEventListener('click', (e) => {
+  //   drawCartPage();
+  // });
 
   rootEl.textContent = '';
   rootEl.appendChild(frag);
 };
+
+const drawCartPage = () => {};
 
 if (localStorage.getItem('token')) {
   drawPostList();
