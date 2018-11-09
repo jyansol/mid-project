@@ -113,7 +113,10 @@ const drawPostList = async (category) => {
   const subjecCheckboxEls = frag.querySelectorAll('.subject input');
   const shapeCheckboxEls = frag.querySelectorAll('.shape input');
   const colorsCheckboxEls = frag.querySelectorAll('.colors input');
-
+  // 첫화면에 그려지게
+  // ALL이 체크되어 있을때
+  // 다른 checkbox 체크하면 ALL체크 풀리게
+  // if(all이 checked면){전부출력}
   const params = {};
   if (category) {
     params.category = category;
@@ -123,22 +126,23 @@ const drawPostList = async (category) => {
   });
 
   for (const { id: title, author, mainImgUrl } of postPage) {
-    // 1. 템플릿 복사
     const frag = document.importNode(templates.postItem, true);
-
-    // 2. 요소 선택
     const imgEl = frag.querySelector('.post-item-img');
     const titleEl = frag.querySelector('.post-item-title');
     const authorEl = frag.querySelector('.post-item-author');
 
-    // 3. 필요한 데이터 불러오기 - x
-    // 4. 내용 채우기
     imgEl.setAttribute('src', mainImgUrl);
     titleEl.textContent = title;
     authorEl.textContent = author;
 
-    // 5. 이벤트 리스너 등록하기
-    // 6. 템플릿을 문서에 삽입
+    imgEl.addEventListener('click', (e) => {
+      drawPostDetail(title);
+      // console.log(e.target.id);
+      // console.log(postIem.mainImgUrl);
+      // console.log(postIem.title);
+      // console.log(postIem.author);
+    });
+
     postListEl.appendChild(frag);
   }
 
@@ -154,35 +158,21 @@ const drawPostList = async (category) => {
       });
 
       for (const { id: title, author, mainImgUrl } of postPage) {
-        // 1. 템플릿 복사
         const frag = document.importNode(templates.postItem, true);
 
-        // 2. 요소 선택
         const imgEl = frag.querySelector('.post-item-img');
         const titleEl = frag.querySelector('.post-item-title');
         const authorEl = frag.querySelector('.post-item-author');
 
-        // 3. 필요한 데이터 불러오기 - x
-        // 4. 내용 채우기
         imgEl.setAttribute('src', mainImgUrl);
         titleEl.textContent = title;
         authorEl.textContent = author;
-
-        // 5. 이벤트 리스너 등록하기
-        // 6. 템플릿을 문서에 삽입
         postListEl.textContent = '';
         postListEl.appendChild(frag);
       }
-
-      // await api.get(`/products?category=${el.getAttribute('name')}`);
-
       console.log(`products?category=${el.getAttribute('name')}`);
     });
   });
-
-  // input box를 다 for문 돌려서
-
-  // postListEl.appendChild(frag);
 
   // const {
   //   data: productList, // product 객체들을 담고있는 배열
@@ -207,8 +197,44 @@ const drawPostList = async (category) => {
 };
 
 // 상세페이지
-const drawPostDetail = () => {
+const drawPostDetail = async (itemId) => {
   const frag = document.importNode(templates.detailPage, true);
+  const imgEl = frag.querySelector('.detail-page-img');
+  const titleEl = frag.querySelector('.detail-page-title');
+  const authorEl = frag.querySelector('.detail-page-author');
+  const priceEl = frag.querySelector('.detail-page-price');
+  const backEl = frag.querySelector('.back-btn');
+  const orderEl = frag.querySelector('.order-btn');
+  const cartEl = frag.querySelector('.cart-btn');
+
+  const {
+    data: { mainImgUrl, title, author, price },
+  } = await api.get(`/products/${itemId}`, {
+    params: {
+      _embed: 'options',
+    },
+  });
+
+  imgEl.setAttribute('src', mainImgUrl);
+  titleEl.textContent = title;
+  authorEl.textContent = author;
+  priceEl.textContent = price;
+
+  //뒤로가기
+  backEl.addEventListener('click', (e) => {
+    drawPostList();
+  });
+
+  //주문하기
+  // orderEl.addEventListener('click', (e) => {
+  //   drawMypage();
+  // });
+
+  //장바구니
+  cartEl.addEventListener('click', (e) => {
+    drawCartPage();
+  });
+
   rootEl.textContent = '';
   rootEl.appendChild(frag);
 };

@@ -151,24 +151,28 @@
 
     <!-- POST LIST ITEM -->
     <template id="post-item">
-      <dl>
-        <img class="post-item-img">
-        <dt class="post-item-title">제목</dt>
-        <dd class="post-item-author">작가</dd>
-      </dl>
+      <div class="post-item-container">
+        <dl>
+          <img class="post-item-img">
+          <dt class="post-item-title">제목</dt>
+          <dd class="post-item-author">작가</dd>
+        </dl>
+      </div>
     </template>
 
 
     <!-- POST DETAIL PAGE -->
     <template id="detail-page">
       <div class="detail-page-container">
+        <button class="back-btn">뒤로가기</button>
         <dl>
           <img class="detail-page-img">
           <dt class="detail-page-title">제목</dt>
+          <dt class="detail-page-author">제목</dt>
           <dd class="detail-page-price">가격</dd>
         </dl>
-        <button>ORDER</button>
-        <button>CART</button>
+        <button class="order-btn">ORDER</button>
+        <button class="cart-btn">CART</button>
       </div>
     </template>
 

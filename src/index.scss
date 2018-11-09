@@ -115,10 +115,6 @@ html {
   background-color: rgb(54, 54, 52);
 }
 
-img {
-  border: 1px solid red;
-}
-
 // 헤더영역
 .main-container {
   display: flex;
@@ -237,8 +233,9 @@ img {
 }
 
 // POST LIST PAGE
+
 .post-page-container {
-  padding-top: 80px;
+  padding-top: 120px;
 }
 
 // color input box
