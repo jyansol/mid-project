@@ -244,12 +244,19 @@ const drawPostDetail = async (itemId) => {
         _embed: 'options',
       },
     });
-    // 클릭한 놈의 정보!!
-    console.log(title);
+
+    // const optionIds = cartItemList.map((c) => c.optionId);
+    // const params = new URLSearchParams();
+    // optionIds.forEach((optionId) => params.append('id', optionId));
+    // params.append('_expand', 'product');
+    // const { data: optionList } = await api.get('/options', {
+    //   params,
+    // });
 
     // imgEl.setAttribute('src', mainImgUrl);
-    // titleEl.textContent = 'ㅋㅋ';
+    // titleEl.textContent = title;
     // priceEl.textContent = price;
+    //값 담아주는거 for of 써야함..
 
     // orderEl.addEventListener('click', async (e) => {
     //   const frag = document.importNode(templates.cartItem, true);
