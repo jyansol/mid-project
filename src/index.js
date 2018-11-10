@@ -23,7 +23,7 @@ const templates = {
   postItem: document.querySelector('#post-item').content,
   detailPage: document.querySelector('#detail-page').content,
   cartPage: document.querySelector('#cart-page').content,
-  cartItem: document.querySelector('#detail-page').content,
+  cartItem: document.querySelector('#cart-item').content,
   myPage: document.querySelector('#my-page').content,
   mypageItem: document.querySelector('#my-page-item').content,
   payPage: document.querySelector('#pay-page').content,
@@ -197,6 +197,7 @@ const drawPostList = async (category) => {
 };
 
 // 상세페이지
+// itemId : item의 정보를 받아오고 있음
 const drawPostDetail = async (itemId) => {
   const frag = document.importNode(templates.detailPage, true);
   const imgEl = frag.querySelector('.detail-page-img');
@@ -236,9 +237,18 @@ const drawPostDetail = async (itemId) => {
     const imgEl = frag.querySelector('.cart-item-img');
     const titleEl = frag.querySelector('.cart-item-title');
     const priceEl = frag.querySelector('.cart-item-price');
-    console.log(mainImgUrl);
-    imgEl.setAttribute('src', mainImgUrl);
-    // titleEl.textContent = title;
+
+    // cartItem으로 보내기
+    const { data: cartItemList } = await api.post('/cartItems', {
+      params: {
+        _embed: 'options',
+      },
+    });
+    // 클릭한 놈의 정보!!
+    console.log(title);
+
+    // imgEl.setAttribute('src', mainImgUrl);
+    // titleEl.textContent = 'ㅋㅋ';
     // priceEl.textContent = price;
 
     // orderEl.addEventListener('click', async (e) => {
