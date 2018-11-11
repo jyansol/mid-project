@@ -31,7 +31,7 @@
     <!-- Main -->
     <template id="home-page">
 
-      <div class="home-page-container">
+      <!-- <div class="home-page-container">
         <div class="home-page">
           <p class="main-text">WELCOME :)</p>
           <button class="enter-btn">ENTER</button>
@@ -41,6 +41,13 @@
               </div>
             </div>
           </div>
+        </div>
+      </div> -->
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
         </div>
       </div>
 
@@ -73,76 +80,64 @@
 
     <!-- POST LIST PAGE -->
     <template id="post-page">
+      <label class="all-checked">
+        <input type="checkbox" name="all" checked>
+        ALL
+      </label>
       <div class="post-page-container">
-        <label> ALL
-          <input type="checkbox" name="all" checked>
-        </label>
-        <div class="material">
-          <label>재료 : </label>
-          <label>
-            <input type="checkbox" name="oils" class="oils-btn">
-            Oils
-          </label>
-          <label>
-            <input type="checkbox" name="acrylic">
-            Acrylic
-          </label>
-          <label>
-            <input type="checkbox" name="waterColor">
-            WaterColor
-          </label>
-          <label>
-            <input type="checkbox" name="ect">
-            Ect
-          </label>
+        <div class="material-container">
+          <div class="alert alert-secondary material" role="alert">
+            MATERIAL
+          </div>
+          <div class="btn-group material" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary oils-btn" name="oils">Oils</button>
+            <button type="button" class="btn btn-secondary" name="Acrylic">Acrylic</button>
+            <button type="button" class="btn btn-secondary" name="waterColor">WaterColor</button>
+            <button type="button" class="btn btn-secondary" name="ect">Ect</button>
+          </div>
         </div>
 
-        <div class="subject">
-          <label>주제 : </label>
-          <label>
-            <input type="checkbox" name="portrait">
-            인물화
-          </label>
-          <label>
-            <input type="checkbox" name="landscapes">
-            풍경화
-          </label>
-          <label>
-            <input type="checkbox" name="digital">
-            일러스트
-          </label>
+        <div class="subject-container">
+          <div class="alert alert-secondary subject" role="alert">
+            SUBJECT
+          </div>
+          <div class="btn-group subject" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary subject-btn" name="portrait">인물화</button>
+            <button type="button" class="btn btn-secondary subject-btn" name="landscapes">풍경화</button>
+            <button type="button" class="btn btn-secondary subject-btn" name="digital">일러스트</button>
+          </div>
         </div>
 
-        <div class="shape">
-          <label>사이즈 : </label>
-          <label>
-            <input type="checkbox" name="가로형">
-            가로형
-          </label>
-          <label>
-            <input type="checkbox" name="세로형">
-            세로형
-          </label>
-          <label>
-            <input type="checkbox" name="정방형">
-            정방형
-          </label>
+        <div class="shape-container">
+          <div class="alert alert-secondary shape" role="alert">
+            SHAPE
+          </div>
+          <div class="btn-group shape" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary shape-btn" name="가로형">가로형</button>
+            <button type="button" class="btn btn-secondary shape-btn" name="세로형">세로형</button>
+            <button type="button" class="btn btn-secondary shape-btn" name="정방형">정방형</button>
+          </div>
         </div>
 
-        <div class="colors">
-          <input type="checkbox" name="빨">
-          <input type="checkbox" name="주">
-          <input type="checkbox" name="노">
-          <input type="checkbox" name="초">
-          <input type="checkbox" name="파">
-          <input type="checkbox" name="남">
-          <input type="checkbox" name="보">
+        <div class="colors-container">
+          <div class="alert alert-secondary" role="alert">
+            COLORS
+          </div>
+          <div class="btn-group colors" role="group" aria-label="Basic example">
+            <button type="button" class="btn red" name="빨">R</button>
+            <button type="button" class="btn orange" name="주">O</button>
+            <button type="button" class="btn yellow" name="노">Y</button>
+            <button type="button" class="btn green" name="초">G</button>
+            <button type="button" class="btn blue" name="파">B</button>
+            <button type="button" class="btn navy" name="남">N</button>
+            <button type="button" class="btn violet" name="보">V</button>
+          </div>
         </div>
 
         <button>SEARCH</button>
 
-        <div class="post-list"></div>
       </div>
+      <div class="post-list"></div>
     </template>
 
     <!-- POST LIST ITEM -->
@@ -184,6 +179,9 @@
     <template id="cart-item">
       <dl>
         <img class="cart-item-img">
+        <select name="option" class="cart-item-option option" required>
+          <option value disabled selected>옵션을 선택하세요.</option>
+        </select>
         <dt class="cart-item-title">제목</dt>
         <dd class="cart-item-price">가격</dd>
         <button>DELETE</button>

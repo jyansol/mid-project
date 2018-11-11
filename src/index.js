@@ -55,7 +55,7 @@ const drawMainForm = async () => {
 
   loginBtn.addEventListener('click', (e) => {
     if (localStorage.getItem('token')) {
-      alert('로그인됨');
+      // alert('로그인됨');
       drawMainForm();
     } else {
       drawLoginForm();
@@ -109,7 +109,7 @@ const drawLoginForm = async () => {
 const drawPostList = async (category) => {
   const frag = document.importNode(templates.postPage, true);
   const postListEl = frag.querySelector('.post-list');
-  const materialCheckboxEls = frag.querySelectorAll('.material input[type="checkbox"]');
+  const materialCheckboxEls = frag.querySelectorAll('.material button');
   const subjecCheckboxEls = frag.querySelectorAll('.subject input[type="checkbox"]');
   const shapeCheckboxEls = frag.querySelectorAll('.shape input[type="checkbox"]');
   const colorsCheckboxEls = frag.querySelectorAll('.colors input[type="checkbox"]');
@@ -233,11 +233,20 @@ const drawPostDetail = async (itemId) => {
 
   // 장바구니
   cartEl.addEventListener('click', async () => {
-    const frag = document.importNode(templates.cartItem, true);
-    const imgEl = frag.querySelector('.cart-item-img');
-    const titleEl = frag.querySelector('.cart-item-title');
-    const priceEl = frag.querySelector('.cart-item-price');
+    if (localStorage.getItem('token')) {
+      drawPostDetail();
+    } else {
+      alert('로그인해주겠니');
+    }
 
+    const frag = document.importNode(templates.cartPage, true);
+    const listEl = frag.querySelector('.cart-list');
+    const orderBtnEl = frag.querySelector('.order-btn');
+
+    // const frag = document.importNode(templates.cartItem, true);
+    // const imgEl = frag.querySelector('.cart-item-img');
+    // const titleEl = frag.querySelector('.cart-item-title');
+    // const priceEl = frag.querySelector('.cart-item-price');
     // cartItem으로 보내기
     const { data: cartItemList } = await api.post('/cartItems', {
       params: {
@@ -245,42 +254,36 @@ const drawPostDetail = async (itemId) => {
       },
     });
 
-    // const optionIds = cartItemList.map((c) => c.optionId);
-    // const params = new URLSearchParams();
-    // optionIds.forEach((optionId) => params.append('id', optionId));
-    // params.append('_expand', 'product');
-    // const { data: optionList } = await api.get('/options', {
-    //   params,
-    // });
+    // cartpage불러와서 cartlist를 frag로 받고, list for of postItem, cartItemlist
+    for (const cartItem of cartPage) {
+      const frag = document.importNode(templates.cartItem, true);
+      const imgEl = frag.querySelector('.cart-item-img');
+      const titleEl = frag.querySelector('.cart-item-title');
+      const priceEl = frag.querySelector('.cart-item-price');
+      const selectEl = frag.querySelector('.option');
+
+      const optionId = parseInt(selectEl.value);
+      const optionIds = cartItemList.map((c) => c.optionId);
+      const params = new URLSearchParams();
+      optionIds.forEach((optionId) => params.append('id', optionId));
+      params.append('_expand', 'products');
+      const { data: optionList } = await api.get('/options', {
+        params,
+      });
+
+      imgEl.setAttribute('src', mainImgUrl);
+      titleEl.textContent = title;
+      priceEl.textContent = price;
+
+      listEl.appendChild(frag);
+    }
 
     // imgEl.setAttribute('src', mainImgUrl);
     // titleEl.textContent = title;
     // priceEl.textContent = price;
-    //값 담아주는거 for of 써야함..
+    //값 담아주는거 for of 써야g함
 
-    // orderEl.addEventListener('click', async (e) => {
-    //   const frag = document.importNode(templates.cartItem, true);
-    //   const imgEl = frag.querySelector('.cart-item-img');
-    //   const titleEl = frag.querySelector('.cart-item-title');
-    //   const priceEl = frag.querySelector('.cart-item-price');
-
-    //   const {
-    //     data: { mainImgUrl, title, author, price },
-    //   } = await api.get('/products', {
-    //     params: {
-    //       _embed: 'options',
-    //     },
-    //   });
-
-    //   imgEl.setAttribute('src', mainImgUrl);
-    //   titleEl.textContent = title;
-    //   authorEl.textContent = author;
-
-    //   // cartList.appendChild(frag);
-    // });
-
-    rootEl.textContent = '';
-    rootEl.appendChild(frag);
+    //화면에 그려주기!
   });
 
   rootEl.textContent = '';
