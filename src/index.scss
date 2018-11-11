@@ -59,7 +59,9 @@ button {
   text-align: center;
   width: 100%;
   height: 100vh;
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   // background: linear-gradient(298deg, #0f1b49, #474747, #121205, #0a1a2d);
   // background-size: 800% 800%;
@@ -143,16 +145,22 @@ button {
     }
   }
 }
-.home-page {
-  display: table-cell;
-  vertical-align: middle;
-}
 
 .main-text {
   font-size: 35px;
   color: black;
 }
-
+.card {
+  padding: 5px;
+  box-shadow: 10px 10px 20px #232323;
+}
+.card-img {
+  line-height: 200px;
+  color: black;
+  font-size: 20px;
+  height: 200px;
+  background-color: rgb(212, 212, 212);
+}
 .enter-btn {
   width: 200px;
   height: 40px;
@@ -187,6 +195,7 @@ button {
 //카테고리
 .post-page-container {
   display: flex;
+  justify-content: center;
 }
 
 .post-page-container div {
@@ -195,7 +204,8 @@ button {
 
 .material,
 .subject,
-.shape {
+.shape,
+.colors {
   width: 400px;
 }
 
@@ -205,6 +215,9 @@ button {
 .subject button,
 .shape button {
   width: 134px;
+}
+.colors button {
+  width: 60px;
 }
 // 색상 카테고리
 div[role='group'] {
@@ -229,9 +242,56 @@ div[role='group'] {
   background-color: rgb(255, 155, 97);
 }
 
+.yellow {
+  background-color: rgb(255, 183, 27);
+}
+.yellow:hover {
+  background-color: rgb(255, 222, 151);
+}
+
+.green {
+  background-color: rgb(85, 167, 19);
+}
+.green:hover {
+  background-color: rgb(149, 218, 132);
+}
+
+.blue {
+  background-color: rgb(19, 88, 167);
+}
+.blue:hover {
+  background-color: rgb(132, 177, 218);
+}
+
+.navy {
+  background-color: rgb(8, 29, 53);
+}
+.navy:hover {
+  background-color: rgb(47, 81, 114);
+}
+
+.violet {
+  background-color: rgb(71, 24, 124);
+}
+.violet:hover {
+  background-color: rgb(117, 59, 165);
+}
+// 상품리스트
+.post-list {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.post-item-container {
+  margin-right: 30px;
+}
+
 // 상품페이지
 .all-checked input {
-  margin-top: 50px;
+  width: 20px;
+  height: 20px;
+  margin: 50px 0 0 100px;
 }
 .post-page-container {
   padding-top: 20px;
